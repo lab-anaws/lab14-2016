@@ -11,9 +11,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class ChangePeriod extends ServerResource {
-	@Post
+	@Post("json")
 	public String store(String fmJson) {
 	    
+        // Check if the payload is provided
+        if(fmJson == null){
+            return new String("No attributes");
+        }
+		
 		// Parse the JSON input
 		
 		ObjectMapper mapper = new ObjectMapper();
